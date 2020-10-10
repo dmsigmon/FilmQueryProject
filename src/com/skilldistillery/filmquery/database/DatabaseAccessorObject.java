@@ -38,7 +38,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			film.setId(filmId);
 			film.setTitle(rs.getString("title"));
 			film.setDescription(rs.getString("description"));
-//				film.setReleaseYear(rs.getString("releaseYear"));
+//			film.setReleaseYear(rs.getString("releaseYear"));
 			film.setRentalDuration(rs.getInt("rental_duration"));
 			film.setRentalRate(rs.getDouble("rental_rate"));
 			film.setLength(rs.getInt("length"));
@@ -46,6 +46,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			film.setRating("rating");
 			film.setSpecialFeatures("special_features");
 			film.setLanguage(rs.getString("name"));
+			film.setActors(findActorsByFilmId(filmId));
 		}
 		conn.close();
 		stmt.close();
@@ -82,7 +83,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	@Override
 	public List<Actor> findActorsByFilmId(int filmId) throws SQLException {
 		List<Actor> actors = new ArrayList<Actor>();
-		String sql = "SELECT * FROM actor JOIN film_actor ON actor.id = film_actor.actor_id WHERE film_id = 1;";
+		String sql = "SELECT * FROM actor JOIN film_actor ON actor.id = film_actor.actor_id WHERE film_id = ?;";
 		String user = "student";
 		String pass = "student";
 
