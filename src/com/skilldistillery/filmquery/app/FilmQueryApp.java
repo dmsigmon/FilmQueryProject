@@ -16,8 +16,8 @@ public class FilmQueryApp {
 
 	public static void main(String[] args) throws SQLException {
 		FilmQueryApp app = new FilmQueryApp();
-		app.test();
-//    app.launch();
+//		app.test();
+    app.launch();
 	}
 
 	private void test() throws SQLException {
@@ -34,7 +34,7 @@ public class FilmQueryApp {
 		}
 	}
 
-	private void launch() {
+	private void launch() throws SQLException {
 		Scanner input = new Scanner(System.in);
 
 		startUserInterface(input);
@@ -42,8 +42,43 @@ public class FilmQueryApp {
 		input.close();
 	}
 
-	private void startUserInterface(Scanner input) {
-
+	private void startUserInterface(Scanner input) throws SQLException {
+		try {
+			boolean flag = true;
+			while(flag) {
+			System.out.println("---Choose a menu Item---");
+			System.out.println("1. Look up Film by ID");
+			System.out.println("2. Look up Film by a Key Word");
+			System.out.println("3. Exit the Application");
+			
+			int menuItem = input.nextInt();
+			if (menuItem == 1) {
+				System.out.println("Enter a film ID ");
+				int filmId = input.nextInt();
+				
+				
+				System.out.println(db.findFilmById(filmId));
+				
+			} else if (menuItem == 2) {
+				System.out.println("Search by Keyword");
+				String keyword = input.next();
+				List<Film> keywordFilms = (ArrayList<Film>) db.findFilmByKeyword(keyword);
+				for (Film film : keywordFilms) {
+					System.out.println(film);
+				}	
+				
+			}
+			else if (menuItem == 3) {
+				flag = false;
+			}
+			else {
+				System.out.println("choose a valid option");
+			}
+			}
+		} catch (Exception e) {
+			System.out.println("Movie not found");
+		}
+		
 	}
 
 }

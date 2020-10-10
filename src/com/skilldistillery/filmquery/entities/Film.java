@@ -7,7 +7,7 @@ public class Film {
 	private int id;
 	private String title;
 	private String description;
-	private String releaseYear;
+	private Integer releaseYear;
 	private String language;
 	private Integer rentalDuration;
 	private Double rentalRate;
@@ -15,7 +15,7 @@ public class Film {
 	private Double replacementCost;
 	private String rating;
 	private String specialFeatures;
-	List<Actor> actors;
+	private List<Actor> actors;
 	
 	public Film() {
 		
@@ -45,11 +45,11 @@ public class Film {
 		this.description = description;
 	}
 
-	public String getReleaseYear() {
+	public Integer getReleaseYear() {
 		return releaseYear;
 	}
 
-	public void setReleaseYear(String releaseYear) {
+	public void setReleaseYear(Integer releaseYear) {
 		this.releaseYear = releaseYear;
 	}
 
@@ -208,9 +208,9 @@ public class Film {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Film [id=");
-		builder.append(id);
-		builder.append(", title=");
+//		builder.append("Film [id=");
+//		builder.append(id);
+		builder.append(" title=");
 		builder.append(title);
 		builder.append(", description=");
 		builder.append(description);
@@ -218,25 +218,25 @@ public class Film {
 		builder.append(releaseYear);
 		builder.append(", language=");
 		builder.append(language);
-		builder.append(", rentalDuration=");
-		builder.append(rentalDuration);
-		builder.append(", rentalRate=");
-		builder.append(rentalRate);
-		builder.append(", length=");
-		builder.append(length);
-		builder.append(", replacementCost=");
-		builder.append(replacementCost);
+//		builder.append(", rentalDuration=");
+//		builder.append(rentalDuration);
+//		builder.append(", rentalRate=");
+//		builder.append(rentalRate);
+//		builder.append(", length=");
+//		builder.append(length);
+//		builder.append(", replacementCost=");
+//		builder.append(replacementCost);
 		builder.append(", rating=");
 		builder.append(rating);
-		builder.append(", specialFeatures=");
-		builder.append(specialFeatures);
+//		builder.append(", specialFeatures=");
+//		builder.append(specialFeatures);
 		builder.append(", actors=");
 		builder.append(actors);
 		builder.append("]");
 		return builder.toString();
 	}
 
-	public Film(int id, String title, String description, String releaseYear, String language, Integer rentalDuration,
+	public Film(int id, String title, String description, Integer releaseYear, String language, Integer rentalDuration,
 			Double rentalRate, Integer length, Double replacementCost, String rating, String specialFeatures,
 			List<Actor> actors) {
 		super();
@@ -253,5 +253,6 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 		this.actors = actors;
 	}
+	
 
-}
+	}
