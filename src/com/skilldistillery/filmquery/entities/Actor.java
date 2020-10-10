@@ -20,6 +20,13 @@ public class Actor {
 		this.lastName = lastName;
 		this.films = films;
 	}
+	public Actor(int id, String firstName, String lastName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	
+	}
 
 	@Override
 	public String toString() {
