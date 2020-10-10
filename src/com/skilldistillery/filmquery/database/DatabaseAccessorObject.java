@@ -108,6 +108,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return actors;
 
 	}
+	
 @Override
 	public List<Film> findFilmByKeyword(String keyword) throws SQLException {
 		List<Film> films = new ArrayList<Film>();
@@ -123,8 +124,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		while (rs.next()) {
 			Film film = new Film();
 			film.setId(rs.getInt("id"));
-			film.setTitle(rs.getString("title"));
-			film.setDescription(rs.getString("description"));
+			film.setTitle(rs.getString("title").toUpperCase());
+			film.setDescription(rs.getString("description").toUpperCase());
 			film.setReleaseYear(rs.getInt("release_year"));
 			film.setRating("rating");
 			film.setActors(findActorsByFilmId(film.getId()));

@@ -1,6 +1,5 @@
 package com.skilldistillery.filmquery.entities;
 
-import java.sql.Date;
 import java.util.List;
 
 public class Film {
